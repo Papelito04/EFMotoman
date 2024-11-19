@@ -89,7 +89,7 @@ namespace EFMotoman.Controllers
 
             var Producto = await _productorepo.Get(s => s.Id == id, tracked: false);
 
-            ProductoUpdateDto ProductoUpdateDto = _mapper.Map<ProductoUpdateDto>(Producto);
+            ProductoUpdateDto productoUpdateDto = _mapper.Map<ProductoUpdateDto>(Producto);
             //AutorUpdateDto AutorUpdateDto = new()
             //{
             //    AutorId = Autor.AutorId,
@@ -97,13 +97,13 @@ namespace EFMotoman.Controllers
             //};
             if (Producto == null) return BadRequest();
 
-            patchDto.ApplyTo(ProductoUpdateDto, ModelState);
+            patchDto.ApplyTo(productoUpdateDto, ModelState);
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            Producto modelo = _mapper.Map<Producto>(ProductoUpdateDto);
+            Producto modelo = _mapper.Map<Producto>(productoUpdateDto);
             //Autor modelo = new()
             //{
             //    AutorId = AutorUpdateDto.AutorId,

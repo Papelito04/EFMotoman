@@ -194,20 +194,28 @@ namespace EFMotoman.Migrations
 
             modelBuilder.Entity("EFMotoman.Models.PreventaProducto", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
                     b.Property<int>("PreventaId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("int");
+                    b.HasKey("Id");
 
-                    b.HasKey("PreventaId", "ProductoId");
+                    b.HasIndex("PreventaId");
 
                     b.HasIndex("ProductoId");
 
-                    b.ToTable("PreventaProductos");
+                    b.ToTable("PreventaProductos", (string)null);
                 });
 
             modelBuilder.Entity("EFMotoman.Models.Producto", b =>
@@ -231,17 +239,12 @@ namespace EFMotoman.Migrations
                     b.Property<double>("PrecioVenta")
                         .HasColumnType("float");
 
-                    b.Property<int?>("PreventaId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProveedorId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoriaId");
-
-                    b.HasIndex("PreventaId");
 
                     b.HasIndex("ProveedorId");
 
@@ -420,10 +423,6 @@ namespace EFMotoman.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EFMotoman.Models.Preventa", null)
-                        .WithMany("Productos")
-                        .HasForeignKey("PreventaId");
-
                     b.HasOne("EFMotoman.Models.Proveedor", "Proveedor")
                         .WithMany("Productos")
                         .HasForeignKey("ProveedorId")
@@ -479,8 +478,6 @@ namespace EFMotoman.Migrations
             modelBuilder.Entity("EFMotoman.Models.Preventa", b =>
                 {
                     b.Navigation("PreVentaProductos");
-
-                    b.Navigation("Productos");
 
                     b.Navigation("Venta")
                         .IsRequired();

@@ -38,18 +38,17 @@ namespace EFMotoman.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configuración de herencia Persona -> Empleado (TPT)
+            // Configuración de la herencia Persona -> Empleado (TPT)
             modelBuilder.Entity<Persona>(entity =>
             {
-                entity.ToTable("Personas"); // Tabla para Persona
-                entity.HasKey(p => p.Id);   // Clave primaria
+                entity.ToTable("Personas");
+                entity.HasKey(p => p.Id);
             });
 
             modelBuilder.Entity<Empleado>(entity =>
             {
-                entity.ToTable("Empleados"); // Tabla separada para Empleado
+                entity.ToTable("Empleados");
 
-                // Propiedades específicas de Empleado
                 entity.Property(e => e.AreaDeTrabajo)
                       .IsRequired()
                       .HasMaxLength(100);
@@ -58,14 +57,33 @@ namespace EFMotoman.Data
                       .IsRequired()
                       .HasMaxLength(100);
 
-                // Relación uno a uno con Usuario
                 entity.HasOne(e => e.Usuario)
                       .WithOne(u => u.Empleado)
                       .HasForeignKey<Usuario>(u => u.EmpleadoId)
                       .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // Relaciones y configuraciones adicionales
+            // Configuración de PreventaProducto con ID independiente
+            modelBuilder.Entity<PreventaProducto>(entity =>
+            {
+                entity.ToTable("PreventaProductos");
+
+                // ID auto-incrementable para la entidad
+                entity.HasKey(pp => pp.Id); // Establecer el Id como la clave primaria
+
+                // Definir las relaciones entre Preventa y Producto
+                entity.HasOne(pp => pp.PreVenta)
+                      .WithMany(p => p.PreVentaProductos)
+                      .HasForeignKey(pp => pp.PreventaId)
+                      .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(pp => pp.Producto)
+                      .WithMany(p => p.PreVentaProductos)
+                      .HasForeignKey(pp => pp.ProductoId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // Configuración de las demás relaciones
             modelBuilder.Entity<Producto>()
                 .HasOne(p => p.Categoria)
                 .WithMany(c => c.Productos)
@@ -85,19 +103,6 @@ namespace EFMotoman.Data
                 .HasOne(p => p.Usuario)
                 .WithMany(u => u.Preventas)
                 .HasForeignKey(p => p.UsuarioId);
-
-            modelBuilder.Entity<PreventaProducto>()
-                .HasKey(pp => new { pp.PreventaId, pp.ProductoId });
-
-            modelBuilder.Entity<PreventaProducto>()
-                .HasOne(pp => pp.PreVenta)
-                .WithMany(p => p.PreVentaProductos)
-                .HasForeignKey(pp => pp.PreventaId);
-
-            modelBuilder.Entity<PreventaProducto>()
-                .HasOne(pp => pp.Producto)
-                .WithMany(p => p.PreVentaProductos)
-                .HasForeignKey(pp => pp.ProductoId);
 
             modelBuilder.Entity<Factura>()
                 .HasOne(f => f.Venta)
@@ -124,11 +129,11 @@ namespace EFMotoman.Data
                 .WithMany(u => u.Notificaciones)
                 .HasForeignKey(n => n.UsuarioId);
 
-            modelBuilder.Entity<Venta>()
-                .HasKey(v => v.Id);
-
             base.OnModelCreating(modelBuilder);
         }
+
+
+
 
 
 

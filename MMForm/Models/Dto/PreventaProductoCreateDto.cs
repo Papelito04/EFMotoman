@@ -1,9 +1,8 @@
 ﻿namespace EFMotoman.Models.Dto
 {
-    public class PreventaProductoUpdateDto
+    public class PreventaProductoCreateDto
     {
 
-        public int Id { get; set; }
         public int PreventaId { get; set; }
 
         public int ProductoId { get; set; }

@@ -42,7 +42,7 @@ namespace EFMotoman
 
             CreateMap<Producto, ProductoDto>().ReverseMap();
             CreateMap<Producto, ProductoCreateDto>().ReverseMap();
-            CreateMap<Producto, ProductoUpateDto>().ReverseMap();
+            CreateMap<Producto, ProductoUpdateDto>().ReverseMap();
 
             CreateMap<Proveedor, ProveedorDto>().ReverseMap();
             CreateMap<Proveedor, ProveedorCreateDto>().ReverseMap();

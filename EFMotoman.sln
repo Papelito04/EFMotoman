@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFMotoman", "EFMotoman\EFMotoman.csproj", "{6D9FB8D4-D6AE-4223-BCC9-4A99A1F18D6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFMotoman", "EFMotoman\EFMotoman.csproj", "{6D9FB8D4-D6AE-4223-BCC9-4A99A1F18D6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMForm", "MMForm\MMForm.csproj", "{8CCA44B8-416A-4459-BFD2-ACB20B271864}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6D9FB8D4-D6AE-4223-BCC9-4A99A1F18D6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D9FB8D4-D6AE-4223-BCC9-4A99A1F18D6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D9FB8D4-D6AE-4223-BCC9-4A99A1F18D6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CCA44B8-416A-4459-BFD2-ACB20B271864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CCA44B8-416A-4459-BFD2-ACB20B271864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CCA44B8-416A-4459-BFD2-ACB20B271864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CCA44B8-416A-4459-BFD2-ACB20B271864}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
