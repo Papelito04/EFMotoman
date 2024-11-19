@@ -14,6 +14,18 @@ namespace EFMotoman.Models
         public Producto Producto { get; set; }
 
         public int Cantidad { get; set; }
+
+        public PreventaProducto()
+        {
+        }
+
+        public PreventaProducto(int id, int preventaId, int productoId, int cantidad)
+        {
+            Id = id;
+            PreventaId = preventaId;
+            ProductoId = productoId;
+            Cantidad = cantidad;
+        }
     }
 
 }

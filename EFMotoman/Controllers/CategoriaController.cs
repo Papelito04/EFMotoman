@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EFMotoman.Controllers
 {
     //NO SE SI FALTA UN GLOBAL CONTROLLER++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    [Route("api/[controller]")]
+    [Route("api/categoria")]
     [ApiController]
     public class CategoriaController : ControllerBase
     {

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EFMotoman.Controllers
 {
+    [Route("api/Factura")]
+    [ApiController]
     public class FacturaController : ControllerBase
     {
         private readonly ILogger<FacturaController> _logger;

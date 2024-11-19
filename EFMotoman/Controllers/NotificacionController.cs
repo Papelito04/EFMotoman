@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EFMotoman.Controllers
 {
+
+    [Route("api/notificacion")]
+    [ApiController]
     public class NotificacionController : ControllerBase
     {
         private readonly ILogger<NotificacionController> _logger;

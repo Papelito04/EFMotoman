@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EFMotoman.Controllers
 {
+
+    [Route("api/preventa")]
+    [ApiController]
     public class PreventaController : ControllerBase
     {
         private readonly ILogger<PreventaController> _logger;

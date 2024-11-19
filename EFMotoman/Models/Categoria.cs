@@ -7,5 +7,17 @@
         public string Descripcion { get; set; }
 
         public ICollection<Producto> Productos { get; set; }
+
+        public Categoria()
+        {
+            Productos = new HashSet<Producto>();
+        }
+
+        public Categoria(int id, string nombre, string descripcion)
+        {
+            Id = id;
+            Nombre = nombre;
+            Descripcion = descripcion;
+        }
     }
 }

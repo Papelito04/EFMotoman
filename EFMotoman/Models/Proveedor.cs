@@ -9,5 +9,18 @@
 
 
         public ICollection<Producto> Productos { get; set; }
+
+        public Proveedor()
+        {
+            Productos = new HashSet<Producto>();
+        }
+
+        public Proveedor(int id, string contacto, int estado, string nombre)
+        {
+            Id = id;
+            this.contacto = contacto;
+            this.estado = estado;
+            this.nombre = nombre;
+        }
     }
 }

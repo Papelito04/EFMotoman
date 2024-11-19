@@ -2,6 +2,11 @@
 {
     public class Preventa
     {
+        public Preventa()
+        {
+            PreVentaProductos = new HashSet<PreventaProducto>();
+        }
+
         public int Id{ get; set; }
         public int UsuarioId { get; set; } // Clave foránea
         public Usuario Usuario { get; set; } // Relación con Usuario
@@ -13,5 +18,11 @@
 
         public ICollection<PreventaProducto> PreVentaProductos { get; set; }
 
+        public Preventa(int id, int usuarioId, DateTime fecha)
+        {
+            Id = id;
+            UsuarioId = usuarioId;
+            Fecha = fecha;
+        }
     }
 }

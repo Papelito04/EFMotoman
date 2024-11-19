@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EFMotoman.Controllers
 {
+    [Route("api/venta")]
+    [ApiController]
     public class VentaController : ControllerBase
     {
         private readonly ILogger<VentaController> _logger;

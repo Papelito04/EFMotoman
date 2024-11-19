@@ -2,6 +2,13 @@
 {
     public class Usuario
     {
+        public Usuario()
+        {
+
+            Preventas = new HashSet<Preventa>();
+            Notificaciones = new HashSet<Notificacion>();
+        }
+
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -16,5 +23,14 @@
         public ICollection<Preventa> Preventas { get; set; }
 
         public ICollection<Notificacion> Notificaciones { get; set; }
+
+        public Usuario(int id, string username, string password, int rol, int empleadoId)
+        {
+            Id = id;
+            Username = username;
+            Password = password;
+            Rol = rol;
+            EmpleadoId = empleadoId;
+        }
     }
 }

@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EFMotoman.Controllers
 {
+
+    [Route("api/usuario")]
+    [ApiController]
     public class UsuarioController : ControllerBase
     {
         private readonly ILogger<UsuarioController> _logger;

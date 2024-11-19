@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EFMotoman.Controllers
 {
     //esto no va por que EF hizo que en personas estuvieran los datos de empleado...
-    [Route("api/[controller]")]
+    [Route("api/empleado")]
     [ApiController]
     public class EmpleadoController : ControllerBase
     {

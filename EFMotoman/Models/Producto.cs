@@ -15,6 +15,21 @@
         public Proveedor Proveedor { get; set; }
 
         public ICollection<PreventaProducto> PreVentaProductos { get; set; }  // Relación con la tabla intermedia
+
+        public Producto()
+        {
+            PreVentaProductos = new HashSet<PreventaProducto>();
+        }
+
+        public Producto(int id, string nombre, double costo, double precioVenta, int categoriaId,  int proveedorId)
+        {
+            Id = id;
+            Nombre = nombre;
+            Costo = costo;
+            PrecioVenta = precioVenta;
+            CategoriaId = categoriaId;
+            ProveedorId = proveedorId;
+        }
     }
 
 }
