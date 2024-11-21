@@ -31,6 +31,7 @@
             Password = password;
             Rol = rol;
             EmpleadoId = empleadoId;
+            //a
         }
     }
 }
