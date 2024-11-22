@@ -17,5 +17,7 @@
             Cargo = cargo;
             Usuario = usuario;
         }
+
+
     }
 }

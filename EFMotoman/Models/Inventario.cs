@@ -22,6 +22,8 @@
             ProductoId = productoId;
             UmbralBajaExistencia = umbralBajaExistencia;
         }
+
+
     }
 
 }

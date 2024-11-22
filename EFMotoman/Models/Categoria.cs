@@ -19,5 +19,7 @@
             Nombre = nombre;
             Descripcion = descripcion;
         }
+        //Metodos de creacion, edicion y eliminacion en repostories
+
     }
 }

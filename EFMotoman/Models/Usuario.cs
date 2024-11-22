@@ -16,8 +16,8 @@
 
 
         // Relación uno a uno: 'Empleado' privado, accesible por el método.
-        public int EmpleadoId { get; set; } // Clave foránea
-        public Empleado Empleado { get; set; }
+        public int EmpleadoId { get; set; }
+        public Empleado employed = null;
 
 
         public ICollection<Preventa> Preventas { get; set; }
@@ -30,7 +30,7 @@
             Username = username;
             Password = password;
             Rol = rol;
-            EmpleadoId = empleadoId;
+            employed = new Empleado();
             //a
         }
     }
