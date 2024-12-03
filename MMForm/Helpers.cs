@@ -1,6 +1,7 @@
 ﻿using EFMotoman.Models.Dto;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,302 +12,112 @@ namespace MMForm
     public class Helpers
     {
         static PersonaDto PersonaToUpdate = new PersonaDto();
-        static List<PersonaDto> listaPersonas = new List<PersonaDto>();
-        static List<EmpleadoDto> listaEmpleados = new List<EmpleadoDto>();
-        static List<UsuarioDto> listaUsuarios = new List<UsuarioDto>();
-        static List<CategoriaDto> listaCategorias = new List<CategoriaDto>();
-        static List<ProductoDto> listaProductos = new List<ProductoDto>();
-        static List<ProveedorDto> listaProveedores = new List<ProveedorDto>();
-        static List<InventarioDto> listaInventarios = new List<InventarioDto>();
-        static List<FacturaDto> listaFacturas = new List<FacturaDto>();
-        static List<NotificacionDto> listaNotificaciones = new List<NotificacionDto>();
-        static List<PreventaDto> listaPreventas = new List<PreventaDto>();
-        static List<PreventaProductoDto> listaPreventaProductos = new List<PreventaProductoDto>();
-        static List<VentaDto> listaVentas = new List<VentaDto>();
-        public async void GetAllPersonas()
-        {
-            List<PersonaDto> persons = new List<PersonaDto>();
+        private List<PersonaDto> listaPersonas = new List<PersonaDto>();
+        private List<EmpleadoDto> listaEmpleados = new List<EmpleadoDto>();
+        private List<UsuarioDto> listaUsuarios = new List<UsuarioDto>();
+        private List<CategoriaDto> listaCategorias = new List<CategoriaDto>();
+        private List<ProductoDto> listaProductos = new List<ProductoDto>();
+        private List<ProveedorDto> listaProveedores = new List<ProveedorDto>();
+        private List<InventarioDto> listaInventarios = new List<InventarioDto>();
+        private List<FacturaDto> listaFacturas = new List<FacturaDto>();
+        private List<NotificacionDto> listaNotificaciones = new List<NotificacionDto>();
+        private List<PreventaDto> listaPreventas = new List<PreventaDto>();
+        private List<PreventaProductoDto> listaPreventaProductos = new List<PreventaProductoDto>();
+        private List<VentaDto> listaVentas = new List<VentaDto>();
 
+
+        public List<PersonaDto> RetornarPersonas() => listaPersonas;
+        public List<EmpleadoDto> RetornarEmpleados() => listaEmpleados; 
+        public List<UsuarioDto> RetornarUsuarios() => listaUsuarios; 
+        public List<CategoriaDto> RetornarCategorias() => listaCategorias; 
+        public List<ProductoDto> RetornarProductos() => listaProductos; 
+        public List<ProveedorDto> RetornarProveedores() => listaProveedores; 
+        public List<InventarioDto> RetornarInventarios() => listaInventarios; 
+        public List<FacturaDto> RetornarFacturas() => listaFacturas; 
+        public List<NotificacionDto> RetornarNotificaciones() => listaNotificaciones; 
+        public List<PreventaDto> RetornarPreventas() => listaPreventas;
+        public List<PreventaProductoDto> RetornarPreventaProductos() => listaPreventaProductos;
+        public List<VentaDto> RetornarVentas() => listaVentas;
+
+
+
+
+
+
+
+
+        private async Task<List<T>> FetchData<T>(string url)
+        {
             using (var client = new HttpClient())
             {
-                using(var response = await client.GetAsync("https://localhost:7126/api/persona"))
+                var response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
                 {
-                    if ( response.IsSuccessStatusCode )
-                    {
-                        var personas = await response.Content.ReadAsStringAsync();
-                        var displayData_Per = JsonConvert.DeserializeObject<List<PersonaDto>>(personas);
-
-                        persons = displayData_Per.ToList();
-                        listaPersonas = persons;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No se puede obtener la lista de personas: {response.StatusCode}");
-                    }
+                    var jsonData = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<T>>(jsonData);
+                }
+                else
+                {
+                    MessageBox.Show($"No se puede obtener los datos: {response.StatusCode}");
+                    return new List<T>();
                 }
             }
         }
 
-        public async void GetAllEmpleados()
+        public async Task GetAllPersonas()
         {
-            List<EmpleadoDto> employes = new List<EmpleadoDto>();
-
-            using (var client = new HttpClient())
-            {
-                using (var response = await client.GetAsync("https://localhost:7126/api/empleado"))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var empleados = await response.Content.ReadAsStringAsync();
-                        var displayData_Emp = JsonConvert.DeserializeObject<List<EmpleadoDto>>(empleados);
-
-                        employes = displayData_Emp.ToList();
-                        listaEmpleados = employes;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No se puede obtener la lista de personas: {response.StatusCode}");
-                    }
-                }
-            }
+            listaPersonas = await FetchData<PersonaDto>("https://localhost:7126/api/persona");
         }
 
-        public async void GetAllUsuarios()
+        public async Task GetAllEmpleados()
         {
-            List<UsuarioDto> users = new List<UsuarioDto>();
-
-            using (var client = new HttpClient())
-            {
-                using (var response = await client.GetAsync("https://localhost:7126/api/usuario"))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var usuarios = await response.Content.ReadAsStringAsync();
-                        var displayData_Usr = JsonConvert.DeserializeObject<List<UsuarioDto>>(usuarios);
-
-                        users = displayData_Usr.ToList();
-                        listaUsuarios = users;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No se puede obtener la lista de personas: {response.StatusCode}");
-                    }
-                }
-            }
+            listaEmpleados = await FetchData < EmpleadoDto>("https://localhost:7126/api/empleado");
         }
 
-        public async void GetAllCategorias()
-
+        public async Task GetAllUsuarios()
         {
-            List<CategoriaDto> categories = new List<CategoriaDto>();
-
-            using (var client = new HttpClient())
-            {
-                using (var response = await client.GetAsync("https://localhost:7126/api/categoria"))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var categorias = await response.Content.ReadAsStringAsync();
-                        var displayData_Cat = JsonConvert.DeserializeObject<List<CategoriaDto>>(categorias);
-
-                        categories = displayData_Cat.ToList();
-                        listaCategorias = categories;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No se puede obtener la lista de categorias: {response.StatusCode}");
-                    }
-                }
-            }
+            listaUsuarios = await FetchData<UsuarioDto>("https://localhost:7126/api/usuario");
         }
 
-        public async void GetAllProductos()
-
+        public async Task GetAllCategorias()
         {
-            List<ProductoDto> products= new List<ProductoDto>();
-
-            using (var client = new HttpClient())
-            {
-                using (var response = await client.GetAsync("https://localhost:7126/api/producto"))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var productos= await response.Content.ReadAsStringAsync();
-                        var displayData_Prd = JsonConvert.DeserializeObject<List<ProductoDto>>(productos);
-
-                        products= displayData_Prd.ToList();
-                        listaProductos= products;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No se puede obtener la lista de productos: {response.StatusCode}");
-                    }
-                }
-            }
+            listaCategorias = await FetchData<CategoriaDto>("https://localhost:7126/api/categoria");
         }
 
-        public async void GetAllProveedores()
-
+        public async Task GetAllProductos()
         {
-            List<ProveedorDto> providers = new List<ProveedorDto>();
-
-            using (var client = new HttpClient())
-            {
-                using (var response = await client.GetAsync("https://localhost:7126/api/proveedor"))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var proveedores= await response.Content.ReadAsStringAsync();
-                        var displayData_Prv = JsonConvert.DeserializeObject<List<ProveedorDto>>(proveedores);
-
-                        providers = displayData_Prv.ToList();
-                        listaProveedores = providers;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No se puede obtener la lista de proveedores: {response.StatusCode}");
-                    }
-                }
-            }
-        }
-        public async void GetAllInventarios()
-        {
-            List<InventarioDto> inventorys = new List<InventarioDto>();
-
-            using (var client = new HttpClient())
-            {
-                using (var response = await client.GetAsync("https://localhost:7126/api/inventario"))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var inventarios = await response.Content.ReadAsStringAsync();
-                        var displayData_Inv = JsonConvert.DeserializeObject<List<InventarioDto>>(inventarios);
-
-                        inventorys = displayData_Inv.ToList();
-                        listaInventarios = inventorys;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No se puede obtener la lista de inventarios: {response.StatusCode}");
-                    }
-                }
-            }
-        }
-        public async void GetAllFacturas()
-        {
-            List<FacturaDto> bills = new List<FacturaDto>();
-
-            using (var client = new HttpClient())
-            {
-                using (var response = await client.GetAsync("https://localhost:7126/api/factura"))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var facturas = await response.Content.ReadAsStringAsync();
-                        var displayData_Fac = JsonConvert.DeserializeObject<List<FacturaDto>>(facturas);
-
-                        bills = displayData_Fac.ToList();
-                        listaFacturas = bills;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No se puede obtener la lista de facturas: {response.StatusCode}");
-                    }
-                }
-            }
-        }
-        public async void GetAllNotificaciones()
-        {
-            List<NotificacionDto> notifications= new List<NotificacionDto>();
-
-            using (var client = new HttpClient())
-            {
-                using (var response = await client.GetAsync("https://localhost:7126/api/notificacion"))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var notificaciones= await response.Content.ReadAsStringAsync();
-                        var displayData_Not = JsonConvert.DeserializeObject<List<NotificacionDto>>(notificaciones);
-
-                        notifications = displayData_Not.ToList();
-                        listaNotificaciones= notifications;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No se puede obtener la lista de notificaciones: {response.StatusCode}");
-                    }
-                }
-            }
-        }
-        public async void GetAllPreventas()
-        {
-            List<PreventaDto> presells= new List<PreventaDto>();
-
-            using (var client = new HttpClient())
-            {
-                using (var response = await client.GetAsync("https://localhost:7126/api/preventa"))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var preventas= await response.Content.ReadAsStringAsync();
-                        var displayData_Prvt = JsonConvert.DeserializeObject<List<PreventaDto>>(preventas);
-
-                        presells = displayData_Prvt.ToList();
-                        listaPreventas= presells;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No se puede obtener la lista de preventas: {response.StatusCode}");
-                    }
-                }
-            }
+            listaProductos = await FetchData<ProductoDto>("https://localhost:7126/api/producto");
         }
 
-        public async void GetAllPreventaProductos()
+        public async Task GetAllProveedores()
         {
-            List<PreventaProductoDto> presellProducts = new List<PreventaProductoDto>();
-
-            using (var client = new HttpClient())
-            {
-                using (var response = await client.GetAsync("https://localhost:7126/api/preventaproducto"))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var preventaProductos = await response.Content.ReadAsStringAsync();
-                        var displayData_PrvtPrd = JsonConvert.DeserializeObject<List<PreventaProductoDto>>(preventaProductos);
-
-                        presellProducts = displayData_PrvtPrd.ToList();
-                        listaPreventaProductos = presellProducts;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No se puede obtener la lista de preventas-productos: {response.StatusCode}");
-                    }
-                }
-            }
+            listaProveedores = await FetchData<ProveedorDto>("https://localhost:7126/api/proveedor");
         }
-        public async void GetAllVentas()
+        public async Task GetAllInventarios()
         {
-            List<VentaDto> sells = new List<VentaDto>();
+            listaInventarios = await FetchData<InventarioDto>("https://localhost:7126/api/inventario");
+        }
+        public async Task GetAllFacturas()
+        {
 
-            using (var client = new HttpClient())
-            {
-                using (var response = await client.GetAsync("https://localhost:7126/api/venta"))
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var ventas= await response.Content.ReadAsStringAsync();
-                        var displayData_PrvtPrd = JsonConvert.DeserializeObject<List<VentaDto>>(ventas);
+            listaFacturas = await FetchData<FacturaDto>("https://localhost:7126/api/factura");
+        }
+        public async Task GetAllNotificaciones()
+        {
+            listaNotificaciones = await FetchData<NotificacionDto>("https://localhost:7126/api/notificacion");
+        }
+        public async Task GetAllPreventas()
+        {
+            listaPreventas= await FetchData<PreventaDto>("https://localhost:7126/api/preventa");
+        }
 
-                        sells = displayData_PrvtPrd.ToList();
-                        listaVentas = sells;
-                    }
-                    else
-                    {
-                        MessageBox.Show($"No se puede obtener la lista de ventas: {response.StatusCode}");
-                    }
-                }
-            }
+        public async Task GetAllPreventaProductos()
+        {
+            listaPreventaProductos = await FetchData<PreventaProductoDto>("https://localhost:7126/api/preventaproducto");
+        }
+        public async Task GetAllVentas()
+        { 
+            listaVentas = await FetchData<VentaDto>("https://localhost:7126/api/venta");
         }
 
 

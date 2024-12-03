@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            dgvPrueba = new DataGridView();
             btnPersonas = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPrueba).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dgvPrueba
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(34, 12);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(723, 293);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dgvPrueba.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPrueba.Location = new Point(34, 12);
+            dgvPrueba.Name = "dgvPrueba";
+            dgvPrueba.RowHeadersWidth = 51;
+            dgvPrueba.RowTemplate.Height = 29;
+            dgvPrueba.Size = new Size(723, 293);
+            dgvPrueba.TabIndex = 0;
+            dgvPrueba.CellContentClick += dataGridView1_CellContentClick;
             // 
             // btnPersonas
             // 
@@ -60,16 +60,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(btnPersonas);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvPrueba);
             Name = "Form1";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPrueba).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dgvPrueba;
         private Button btnPersonas;
     }
 }
