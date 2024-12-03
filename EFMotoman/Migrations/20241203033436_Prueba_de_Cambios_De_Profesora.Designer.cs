@@ -4,6 +4,7 @@ using EFMotoman.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFMotoman.Migrations
 {
     [DbContext(typeof(MMContext))]
-    partial class MMContextModelSnapshot : ModelSnapshot
+    [Migration("20241203033436_Prueba_de_Cambios_De_Profesora")]
+    partial class Prueba_de_Cambios_De_Profesora
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

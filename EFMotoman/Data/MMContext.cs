@@ -58,7 +58,7 @@ namespace EFMotoman.Data
                       .HasMaxLength(100);
 
                 entity.HasOne(e => e.Usuario)
-                      .WithOne(u => u.Empleado)
+                      .WithOne(u => u.employed)
                       .HasForeignKey<Usuario>(u => u.EmpleadoId)
                       .OnDelete(DeleteBehavior.Cascade);
             });
@@ -85,7 +85,7 @@ namespace EFMotoman.Data
 
             // Configuración de las demás relaciones
             modelBuilder.Entity<Producto>()
-                .HasOne(p => p.Categoria)
+                .HasOne(p => p.category)
                 .WithMany(c => c.Productos)
                 .HasForeignKey(p => p.CategoriaId);
 
@@ -95,7 +95,7 @@ namespace EFMotoman.Data
                 .HasForeignKey<Inventario>(i => i.ProductoId);
 
             modelBuilder.Entity<Producto>()
-                .HasOne(p => p.Proveedor)
+                .HasOne(p => p.provider)
                 .WithMany(pr => pr.Productos)
                 .HasForeignKey(p => p.ProveedorId);
 

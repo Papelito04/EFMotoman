@@ -11,5 +11,12 @@ namespace MMForm
         {
 
         }
+
+
+        Helpers helper = new Helpers();
+        private void btnPersonas_Click(object sender, EventArgs e)
+        {
+            helper.GetAllVentas();
+        }
     }
 }

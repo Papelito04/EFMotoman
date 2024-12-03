@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
+            btnPersonas = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -39,15 +40,26 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(723, 366);
+            dataGridView1.Size = new Size(723, 293);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // btnPersonas
+            // 
+            btnPersonas.Location = new Point(457, 387);
+            btnPersonas.Name = "btnPersonas";
+            btnPersonas.Size = new Size(94, 29);
+            btnPersonas.TabIndex = 1;
+            btnPersonas.Text = "cargar";
+            btnPersonas.UseVisualStyleBackColor = true;
+            btnPersonas.Click += btnPersonas_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnPersonas);
             Controls.Add(dataGridView1);
             Name = "Form1";
             Text = "Form1";
@@ -58,5 +70,6 @@
         #endregion
 
         private DataGridView dataGridView1;
+        private Button btnPersonas;
     }
 }
