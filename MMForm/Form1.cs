@@ -16,10 +16,10 @@ namespace MMForm
         Helpers helper = new Helpers();
         private async void btnPersonas_Click(object sender, EventArgs e)
         {
-            await helper.GetAllInventarios();
+            await helper.GetAllProductos();
 
             
-            dgvPrueba.DataSource = helper.RetornarInventarios();
+            dgvPrueba.DataSource = helper.RetornarProductos();
         }
     }
 }
