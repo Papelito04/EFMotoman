@@ -28,8 +28,8 @@ namespace MMForm
 
         private void CargarProductosFlowLayout()
         {
-            // Suponiendo que tienes un método para obtener todos los productos
-            var listaProductos = helper.RetornarProductos();  // Método que obtienes de la API
+            
+            var listaProductos = helper.RetornarProductos();  
 
             // Limpiar el FlowLayoutPanel antes de agregar nuevos controles
             flowLayoutPanelPrds.Controls.Clear();
