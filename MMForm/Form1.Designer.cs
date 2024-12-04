@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             dgvPrueba = new DataGridView();
             btnPersonas = new Button();
             tcPrueba = new TabControl();
@@ -35,10 +38,13 @@
             tabPage2 = new TabPage();
             flowLayoutPanelPrds = new FlowLayoutPanel();
             tabPage3 = new TabPage();
+            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)dgvPrueba).BeginInit();
             tcPrueba.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             SuspendLayout();
             // 
             // dgvPrueba
@@ -105,6 +111,7 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(chart1);
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
@@ -112,6 +119,22 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "tabPage3";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chart1.Legends.Add(legend1);
+            chart1.Location = new Point(57, 25);
+            chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chart1.Series.Add(series1);
+            chart1.Size = new Size(305, 302);
+            chart1.TabIndex = 0;
+            chart1.Text = "chart1";
             // 
             // Form1
             // 
@@ -126,6 +149,8 @@
             tcPrueba.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
+            tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
         }
 
@@ -138,5 +163,6 @@
         private TabPage tabPage2;
         private FlowLayoutPanel flowLayoutPanelPrds;
         private TabPage tabPage3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
