@@ -84,6 +84,8 @@ namespace MMForm
                 {
                     NavBarMenuExpand = false;
                     NavBartransition.Stop();
+
+                    //QUIZAS LUEGO PONER QUE LOS PANELES = NAVBAR.WITH
                 }
             }
             else
@@ -93,6 +95,8 @@ namespace MMForm
                 {
                     NavBarMenuExpand = true;
                     NavBartransition.Stop();
+
+                    //QUIZAS LUEGO PONER QUE LOS PANELES = NAVBAR.WITH
                 }
             }
         }

@@ -384,6 +384,7 @@
             Controls.Add(flpNavBar);
             Controls.Add(pnlBarraTitulo);
             FormBorderStyle = FormBorderStyle.None;
+            IsMdiContainer = true;
             Name = "BaseForm";
             Text = "BaseForm";
             pnlBarraTitulo.ResumeLayout(false);
