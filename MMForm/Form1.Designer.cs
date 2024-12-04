@@ -34,6 +34,7 @@
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
             flowLayoutPanelPrds = new FlowLayoutPanel();
+            tabPage3 = new TabPage();
             ((System.ComponentModel.ISupportInitialize)dgvPrueba).BeginInit();
             tcPrueba.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -65,6 +66,7 @@
             // 
             tcPrueba.Controls.Add(tabPage1);
             tcPrueba.Controls.Add(tabPage2);
+            tcPrueba.Controls.Add(tabPage3);
             tcPrueba.Location = new Point(12, 12);
             tcPrueba.Name = "tcPrueba";
             tcPrueba.SelectedIndex = 0;
@@ -101,6 +103,16 @@
             flowLayoutPanelPrds.Size = new Size(765, 337);
             flowLayoutPanelPrds.TabIndex = 0;
             // 
+            // tabPage3
+            // 
+            tabPage3.Location = new Point(4, 29);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(777, 349);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "tabPage3";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -125,5 +137,6 @@
         private TabPage tabPage1;
         private TabPage tabPage2;
         private FlowLayoutPanel flowLayoutPanelPrds;
+        private TabPage tabPage3;
     }
 }

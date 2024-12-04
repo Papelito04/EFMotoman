@@ -123,6 +123,8 @@ namespace MMForm
             formHijo.Show();
         }
 
+
+        #region Botones de ventana
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -146,5 +148,6 @@ namespace MMForm
             btnRestaurar.Visible = false;
             btnMaximizar.Visible = true;
         }
+        #endregion
     }
 }
