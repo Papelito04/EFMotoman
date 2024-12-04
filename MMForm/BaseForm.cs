@@ -104,6 +104,47 @@ namespace MMForm
         private void btnMenu_Click(object sender, EventArgs e)
         {
             NavBartransition.Start();
-        } 
+        }
+
+        private Form formActivo = null;
+        private void OpenFormHijo(Form formHijo)
+        {
+            if (formActivo != null)
+            {
+                formActivo.Close();
+            }
+            formActivo = formHijo;
+            formHijo.TopLevel = false;
+            formHijo.FormBorderStyle = FormBorderStyle.None;
+            formHijo.Dock = DockStyle.Fill;
+            PnlFormHijo.Controls.Add(formHijo);
+            PnlFormHijo.Tag = formHijo;
+            formHijo.BringToFront();
+            formHijo.Show();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            btnMaximizar.Visible = false;
+            btnRestaurar.Visible = true;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnRestaurar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            btnRestaurar.Visible = false;
+            btnMaximizar.Visible = true;
+        }
     }
 }

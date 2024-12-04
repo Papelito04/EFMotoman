@@ -58,6 +58,7 @@
             Productotransition = new System.Windows.Forms.Timer(components);
             DetalleTransition = new System.Windows.Forms.Timer(components);
             NavBartransition = new System.Windows.Forms.Timer(components);
+            PnlFormHijo = new Panel();
             pnlBarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnRestaurar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnSalir).BeginInit();
@@ -93,17 +94,21 @@
             // 
             // btnRestaurar
             // 
+            btnRestaurar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnRestaurar.Cursor = Cursors.Hand;
             btnRestaurar.Image = (Image)resources.GetObject("btnRestaurar.Image");
-            btnRestaurar.Location = new Point(972, 3);
+            btnRestaurar.Location = new Point(1048, 3);
             btnRestaurar.Name = "btnRestaurar";
             btnRestaurar.Size = new Size(32, 33);
             btnRestaurar.SizeMode = PictureBoxSizeMode.Zoom;
             btnRestaurar.TabIndex = 3;
             btnRestaurar.TabStop = false;
+            btnRestaurar.Visible = false;
+            btnRestaurar.Click += btnRestaurar_Click;
             // 
             // btnSalir
             // 
+            btnSalir.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSalir.Cursor = Cursors.Hand;
             btnSalir.Image = (Image)resources.GetObject("btnSalir.Image");
             btnSalir.Location = new Point(1086, 3);
@@ -112,9 +117,11 @@
             btnSalir.SizeMode = PictureBoxSizeMode.Zoom;
             btnSalir.TabIndex = 4;
             btnSalir.TabStop = false;
+            btnSalir.Click += btnSalir_Click;
             // 
             // btnMinimizar
             // 
+            btnMinimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnMinimizar.Cursor = Cursors.Hand;
             btnMinimizar.Image = (Image)resources.GetObject("btnMinimizar.Image");
             btnMinimizar.Location = new Point(1010, 3);
@@ -123,9 +130,11 @@
             btnMinimizar.SizeMode = PictureBoxSizeMode.Zoom;
             btnMinimizar.TabIndex = 1;
             btnMinimizar.TabStop = false;
+            btnMinimizar.Click += btnMinimizar_Click;
             // 
             // btnMaximizar
             // 
+            btnMaximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnMaximizar.Cursor = Cursors.Hand;
             btnMaximizar.Image = (Image)resources.GetObject("btnMaximizar.Image");
             btnMaximizar.Location = new Point(1048, 3);
@@ -134,6 +143,7 @@
             btnMaximizar.SizeMode = PictureBoxSizeMode.Zoom;
             btnMaximizar.TabIndex = 2;
             btnMaximizar.TabStop = false;
+            btnMaximizar.Click += btnMaximizar_Click;
             // 
             // btnMenu
             // 
@@ -376,15 +386,24 @@
             NavBartransition.Interval = 5;
             NavBartransition.Tick += NavBartransition_Tick;
             // 
+            // PnlFormHijo
+            // 
+            PnlFormHijo.BackColor = Color.FromArgb(129, 134, 139);
+            PnlFormHijo.Dock = DockStyle.Fill;
+            PnlFormHijo.Location = new Point(240, 39);
+            PnlFormHijo.Name = "PnlFormHijo";
+            PnlFormHijo.Size = new Size(890, 581);
+            PnlFormHijo.TabIndex = 2;
+            // 
             // BaseForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1130, 620);
+            Controls.Add(PnlFormHijo);
             Controls.Add(flpNavBar);
             Controls.Add(pnlBarraTitulo);
             FormBorderStyle = FormBorderStyle.None;
-            IsMdiContainer = true;
             Name = "BaseForm";
             Text = "BaseForm";
             pnlBarraTitulo.ResumeLayout(false);
@@ -437,5 +456,6 @@
         private System.Windows.Forms.Timer Productotransition;
         private System.Windows.Forms.Timer DetalleTransition;
         private System.Windows.Forms.Timer NavBartransition;
+        private Panel PnlFormHijo;
     }
 }
