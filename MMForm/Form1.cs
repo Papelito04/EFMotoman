@@ -20,7 +20,7 @@ namespace MMForm
         {
             await helper.GetAllProductos();
 
-            
+
             dgvPrueba.DataSource = helper.RetornarProductos();
             CargarProductosFlowLayout();
 
@@ -28,8 +28,8 @@ namespace MMForm
 
         private void CargarProductosFlowLayout()
         {
-            
-            var listaProductos = helper.RetornarProductos();  
+
+            var listaProductos = helper.RetornarProductos();
 
             // Limpiar el FlowLayoutPanel antes de agregar nuevos controles
             flowLayoutPanelPrds.Controls.Clear();
@@ -49,5 +49,9 @@ namespace MMForm
             }
         }
 
+        private void flowLayoutPanelPrds_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
