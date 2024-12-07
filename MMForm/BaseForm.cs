@@ -149,5 +149,10 @@ namespace MMForm
             btnMaximizar.Visible = true;
         }
         #endregion
+
+        private void PnlFormHijo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
