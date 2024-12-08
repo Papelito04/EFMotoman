@@ -158,6 +158,7 @@ namespace MMForm
         }
         #endregion
 
+
         private void btnResumen_Click(object sender, EventArgs e)
         {
             ResumenForm resumenForm = new ResumenForm();
@@ -170,6 +171,10 @@ namespace MMForm
             HistorialForm historialForm = new HistorialForm();
 
             OpenFormHijo(historialForm);
+        }
+        private void PnlFormHijo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

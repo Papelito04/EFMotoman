@@ -396,6 +396,7 @@
             PnlFormHijo.Name = "PnlFormHijo";
             PnlFormHijo.Size = new Size(890, 581);
             PnlFormHijo.TabIndex = 2;
+            PnlFormHijo.Paint += PnlFormHijo_Paint;
             // 
             // BaseForm
             // 

@@ -108,6 +108,7 @@
             flowLayoutPanelPrds.Name = "flowLayoutPanelPrds";
             flowLayoutPanelPrds.Size = new Size(765, 337);
             flowLayoutPanelPrds.TabIndex = 0;
+            flowLayoutPanelPrds.Paint += flowLayoutPanelPrds_Paint;
             // 
             // tabPage3
             // 
