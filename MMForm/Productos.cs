@@ -22,25 +22,31 @@ namespace MMForm
         }
         Helpers helper = new Helpers();
 
-        private void Productos_Load(object sender, EventArgs e)
+        private async void Productos_Load(object sender, EventArgs e)
         {
             List<EFMotoman.Models.Dto.CategoriaDto> listaCategorias = new List<EFMotoman.Models.Dto.CategoriaDto>();
+
+
+
+            //carrusel de productos
+
+
+            await helper.GetAllProductos();
+            await helper.GetAllCategorias();
+            listaCategorias = helper.RetornarCategorias();
             cmbxBusqueda.DataSource = listaCategorias;
             cmbxBusqueda.DisplayMember = "Nombre"; // Lo que se muestra al usuario
             cmbxBusqueda.ValueMember = "Id";      // Valor interno (clave única)
 
-            //carrusel de productos
-            
-            
-            helper.GetAllProductos();
-
             CargarProductosFlowLayout();
-                     
-                     
+
+
         }
 
-        private void CargarProductosFlowLayout()
+        private async void CargarProductosFlowLayout()
         {
+
+            await helper.GetAllProductos();
 
             var listaProductos = helper.RetornarProductos();
 

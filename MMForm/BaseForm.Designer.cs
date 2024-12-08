@@ -225,6 +225,7 @@
             btnCatalogo.TabIndex = 0;
             btnCatalogo.Text = "Catalogo";
             btnCatalogo.UseVisualStyleBackColor = false;
+            btnCatalogo.Click += btnCatalogo_Click;
             // 
             // DetalleContainer
             // 

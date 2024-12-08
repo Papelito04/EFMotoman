@@ -176,5 +176,12 @@ namespace MMForm
         {
 
         }
+
+        private void btnCatalogo_Click(object sender, EventArgs e)
+        {
+            Productos ProductosForm = new Productos();
+
+            OpenFormHijo(ProductosForm);
+        }
     }
 }
