@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MMForm.FormulariosData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -109,19 +110,26 @@ namespace MMForm
         private Form formActivo = null;
         private void OpenFormHijo(Form formHijo)
         {
+            // Evitar cargar el mismo formulario varias veces
+            if (formActivo != null && formActivo.GetType() == formHijo.GetType())
+            {
+                return; // Si ya está activo, no lo cargues de nuevo
+            }
+
             if (formActivo != null)
             {
                 formActivo.Close();
             }
+
             formActivo = formHijo;
             formHijo.TopLevel = false;
             formHijo.FormBorderStyle = FormBorderStyle.None;
             formHijo.Dock = DockStyle.Fill;
             PnlFormHijo.Controls.Add(formHijo);
-            PnlFormHijo.Tag = formHijo;
             formHijo.BringToFront();
             formHijo.Show();
         }
+
 
 
         #region Botones de ventana
@@ -149,5 +157,19 @@ namespace MMForm
             btnMaximizar.Visible = true;
         }
         #endregion
+
+        private void btnResumen_Click(object sender, EventArgs e)
+        {
+            ResumenForm resumenForm = new ResumenForm();
+
+            OpenFormHijo(resumenForm);
+        }
+
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            HistorialForm historialForm = new HistorialForm();
+
+            OpenFormHijo(historialForm);
+        }
     }
 }

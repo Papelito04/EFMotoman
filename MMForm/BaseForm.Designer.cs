@@ -304,6 +304,7 @@
             btnResumen.TabIndex = 0;
             btnResumen.Text = "Resumen";
             btnResumen.UseVisualStyleBackColor = false;
+            btnResumen.Click += btnResumen_Click;
             // 
             // pnlHistorial
             // 
@@ -326,6 +327,7 @@
             btnHistorial.TabIndex = 0;
             btnHistorial.Text = "Historial";
             btnHistorial.UseVisualStyleBackColor = false;
+            btnHistorial.Click += btnHistorial_Click;
             // 
             // pnlCuenta
             // 
