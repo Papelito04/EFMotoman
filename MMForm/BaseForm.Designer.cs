@@ -216,6 +216,7 @@
             btnCatalogo.TabIndex = 0;
             btnCatalogo.Text = "Catalogo";
             btnCatalogo.UseVisualStyleBackColor = false;
+            btnCatalogo.Click += btnCatalogo_Click;
             // 
             // btnDetallesVentas
             // 
@@ -274,6 +275,7 @@
             btnResumen.TabIndex = 1;
             btnResumen.Text = "Resumen";
             btnResumen.UseVisualStyleBackColor = false;
+            btnResumen.Click += btnResumen_Click;
             // 
             // btnHistorial
             // 
@@ -289,6 +291,7 @@
             btnHistorial.TabIndex = 2;
             btnHistorial.Text = "Historial";
             btnHistorial.UseVisualStyleBackColor = false;
+            btnHistorial.Click += btnHistorial_Click;
             // 
             // btnCuenta
             // 

@@ -24,4 +24,10 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="LiveCharts.WinForms">
+      <HintPath>..\..\..\..\.nuget\packages\livecharts.winforms\0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

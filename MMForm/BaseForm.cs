@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MMForm.FormulariosData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -111,19 +112,26 @@ namespace MMForm
         private Form formActivo = null;
         private void OpenFormHijo(Form formHijo)
         {
+            // Evitar cargar el mismo formulario varias veces
+            if (formActivo != null && formActivo.GetType() == formHijo.GetType())
+            {
+                return; // Si ya está activo, no lo cargues de nuevo
+            }
+
             if (formActivo != null)
             {
                 formActivo.Close();
             }
+
             formActivo = formHijo;
             formHijo.TopLevel = false;
             formHijo.FormBorderStyle = FormBorderStyle.None;
             formHijo.Dock = DockStyle.Fill;
             PnlFormHijo.Controls.Add(formHijo);
-            PnlFormHijo.Tag = formHijo;
             formHijo.BringToFront();
             formHijo.Show();
         }
+
 
 
         #region Botones de ventana
@@ -152,11 +160,26 @@ namespace MMForm
         }
         #endregion
 
+
+        private void btnResumen_Click(object sender, EventArgs e)
+        {
+            ResumenForm resumenForm = new ResumenForm();
+
+            OpenFormHijo(resumenForm);
+        }
+
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            HistorialForm historialForm = new HistorialForm();
+
+            OpenFormHijo(historialForm);
+        }
         private void PnlFormHijo_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
+<<<<<<< HEAD
         private void btnRegistrarVenta_Click(object sender, EventArgs e)
         {
 
@@ -170,6 +193,13 @@ namespace MMForm
         private void btnRegistrarVenta_Click_1(object sender, EventArgs e)
         {
             OpenFormHijo(new frmRegistroVenta());
+=======
+        private void btnCatalogo_Click(object sender, EventArgs e)
+        {
+            Productos ProductosForm = new Productos();
+
+            OpenFormHijo(ProductosForm);
+>>>>>>> b5227f10ea7e058d247e75fbc37b7aae1e906677
         }
     }
 }
