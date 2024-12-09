@@ -15,6 +15,8 @@ namespace MMForm
         public BaseForm()
         {
             InitializeComponent();
+            pnlCatalogo.Height = 0;
+            pnlDetallesVentas.Height = 0;
         }
 
         bool ProductoMenuExpand = false;
@@ -22,8 +24,8 @@ namespace MMForm
         {
             if (ProductoMenuExpand == false)
             {
-                prdContainer.Height += 5;
-                if (prdContainer.Height >= 105)
+                pnlCatalogo.Height += 5;
+                if (pnlCatalogo.Height >= 76)
                 {
                     Productotransition.Stop();
                     ProductoMenuExpand = true;
@@ -31,8 +33,8 @@ namespace MMForm
             }
             else
             {
-                prdContainer.Height -= 5;
-                if (prdContainer.Height <= 50)
+                pnlCatalogo.Height -= 5;
+                if (pnlCatalogo.Height <= 0)
                 {
                     Productotransition.Stop();
                     ProductoMenuExpand = false;
@@ -50,8 +52,8 @@ namespace MMForm
         {
             if (DetalleMenuExpand == false)
             {
-                DetalleContainer.Height += 5;
-                if (DetalleContainer.Height >= 203)
+                pnlDetallesVentas.Height += 5;
+                if (pnlDetallesVentas.Height >= 212)
                 {
                     DetalleTransition.Stop();
                     DetalleMenuExpand = true;
@@ -59,8 +61,8 @@ namespace MMForm
             }
             else
             {
-                DetalleContainer.Height -= 5;
-                if (DetalleContainer.Height <= 50)
+                pnlDetallesVentas.Height -= 5;
+                if (pnlDetallesVentas.Height <= 0)
                 {
                     DetalleTransition.Stop();
                     DetalleMenuExpand = false;
@@ -79,7 +81,7 @@ namespace MMForm
         {
             if (NavBarMenuExpand)
             {
-                flpNavBar.Width -= 5;
+                flpNavBar.Width -= 2;
                 if (flpNavBar.Width <= 50)
                 {
                     NavBarMenuExpand = false;
@@ -90,7 +92,7 @@ namespace MMForm
             }
             else
             {
-                flpNavBar.Width += 5;
+                flpNavBar.Width += 2;
                 if (flpNavBar.Width >= 240)
                 {
                     NavBarMenuExpand = true;
@@ -153,6 +155,21 @@ namespace MMForm
         private void PnlFormHijo_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnRegistrarVenta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnRegistrarVenta_Click_1(object sender, EventArgs e)
+        {
+            OpenFormHijo(new frmRegistroVenta());
         }
     }
 }

@@ -36,29 +36,22 @@
             btnMinimizar = new PictureBox();
             btnMaximizar = new PictureBox();
             btnMenu = new PictureBox();
-            flpNavBar = new FlowLayoutPanel();
-            prdContainer = new FlowLayoutPanel();
-            pnlProductos = new Panel();
-            btnProductos = new Button();
-            pnlCatalogo = new Panel();
-            btnCatalogo = new Button();
-            DetalleContainer = new FlowLayoutPanel();
-            pnlDetallesVentas = new Panel();
-            btnDetallesVentas = new Button();
-            pnlResgistrarVenta = new Panel();
-            btnRegistrarVenta = new Button();
-            pnlResumen = new Panel();
-            btnResumen = new Button();
-            pnlHistorial = new Panel();
-            btnHistorial = new Button();
-            pnlCuenta = new Panel();
-            btnCuenta = new Button();
-            pnlCerrarSesion = new Panel();
-            btnCerrarSesion = new Button();
             Productotransition = new System.Windows.Forms.Timer(components);
             DetalleTransition = new System.Windows.Forms.Timer(components);
             NavBartransition = new System.Windows.Forms.Timer(components);
+            flpNavBar = new Panel();
+            btnProductos = new Button();
+            pnlCatalogo = new Panel();
+            btnCatalogo = new Button();
+            btnDetallesVentas = new Button();
+            pnlDetallesVentas = new Panel();
+            btnRegistrarVenta = new Button();
+            btnResumen = new Button();
+            btnHistorial = new Button();
+            btnCuenta = new Button();
+            btnCerrarSesion = new Button();
             PnlFormHijo = new Panel();
+            panel1 = new Panel();
             pnlBarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnRestaurar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnSalir).BeginInit();
@@ -66,16 +59,9 @@
             ((System.ComponentModel.ISupportInitialize)btnMaximizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnMenu).BeginInit();
             flpNavBar.SuspendLayout();
-            prdContainer.SuspendLayout();
-            pnlProductos.SuspendLayout();
             pnlCatalogo.SuspendLayout();
-            DetalleContainer.SuspendLayout();
             pnlDetallesVentas.SuspendLayout();
-            pnlResgistrarVenta.SuspendLayout();
-            pnlResumen.SuspendLayout();
-            pnlHistorial.SuspendLayout();
-            pnlCuenta.SuspendLayout();
-            pnlCerrarSesion.SuspendLayout();
+            PnlFormHijo.SuspendLayout();
             SuspendLayout();
             // 
             // pnlBarraTitulo
@@ -157,48 +143,50 @@
             btnMenu.TabStop = false;
             btnMenu.Click += btnMenu_Click;
             // 
+            // Productotransition
+            // 
+            Productotransition.Interval = 2;
+            Productotransition.Tick += Productotransition_Tick;
+            // 
+            // DetalleTransition
+            // 
+            DetalleTransition.Interval = 2;
+            DetalleTransition.Tick += DetalleTransition_Tick;
+            // 
+            // NavBartransition
+            // 
+            NavBartransition.Interval = 2;
+            NavBartransition.Tick += NavBartransition_Tick;
+            // 
             // flpNavBar
             // 
+            flpNavBar.AutoScroll = true;
             flpNavBar.BackColor = Color.FromArgb(255, 146, 69);
-            flpNavBar.Controls.Add(prdContainer);
-            flpNavBar.Controls.Add(DetalleContainer);
-            flpNavBar.Controls.Add(pnlCuenta);
-            flpNavBar.Controls.Add(pnlCerrarSesion);
+            flpNavBar.Controls.Add(btnCerrarSesion);
+            flpNavBar.Controls.Add(btnCuenta);
+            flpNavBar.Controls.Add(pnlDetallesVentas);
+            flpNavBar.Controls.Add(btnDetallesVentas);
+            flpNavBar.Controls.Add(pnlCatalogo);
+            flpNavBar.Controls.Add(btnProductos);
             flpNavBar.Dock = DockStyle.Left;
-            flpNavBar.FlowDirection = FlowDirection.TopDown;
-            flpNavBar.Location = new Point(0, 39);
+            flpNavBar.Location = new Point(0, 0);
             flpNavBar.Name = "flpNavBar";
-            flpNavBar.Size = new Size(240, 581);
-            flpNavBar.TabIndex = 1;
-            // 
-            // prdContainer
-            // 
-            prdContainer.BackColor = Color.FromArgb(255, 146, 69);
-            prdContainer.Controls.Add(pnlProductos);
-            prdContainer.Controls.Add(pnlCatalogo);
-            prdContainer.Location = new Point(0, 0);
-            prdContainer.Margin = new Padding(0);
-            prdContainer.Name = "prdContainer";
-            prdContainer.Size = new Size(255, 50);
-            prdContainer.TabIndex = 5;
-            // 
-            // pnlProductos
-            // 
-            pnlProductos.Controls.Add(btnProductos);
-            pnlProductos.Location = new Point(3, 3);
-            pnlProductos.Name = "pnlProductos";
-            pnlProductos.Size = new Size(252, 50);
-            pnlProductos.TabIndex = 2;
+            flpNavBar.Size = new Size(250, 581);
+            flpNavBar.TabIndex = 5;
+            flpNavBar.Paint += panel1_Paint;
             // 
             // btnProductos
             // 
             btnProductos.BackColor = Color.FromArgb(255, 146, 69);
             btnProductos.Cursor = Cursors.Hand;
+            btnProductos.Dock = DockStyle.Top;
+            btnProductos.FlatAppearance.BorderColor = Color.FromArgb(255, 146, 69);
+            btnProductos.FlatStyle = FlatStyle.Flat;
             btnProductos.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            btnProductos.ForeColor = Color.FromArgb(223, 214, 214);
-            btnProductos.Location = new Point(-15, -9);
+            btnProductos.ForeColor = Color.White;
+            btnProductos.Location = new Point(0, 0);
             btnProductos.Name = "btnProductos";
-            btnProductos.Size = new Size(286, 68);
+            btnProductos.Size = new Size(250, 68);
             btnProductos.TabIndex = 0;
             btnProductos.Text = "Productos";
             btnProductos.UseVisualStyleBackColor = false;
@@ -207,194 +195,150 @@
             // pnlCatalogo
             // 
             pnlCatalogo.Controls.Add(btnCatalogo);
-            pnlCatalogo.Location = new Point(0, 56);
-            pnlCatalogo.Margin = new Padding(0);
+            pnlCatalogo.Dock = DockStyle.Top;
+            pnlCatalogo.Location = new Point(0, 68);
             pnlCatalogo.Name = "pnlCatalogo";
-            pnlCatalogo.Size = new Size(255, 50);
-            pnlCatalogo.TabIndex = 4;
+            pnlCatalogo.Size = new Size(250, 76);
+            pnlCatalogo.TabIndex = 1;
             // 
             // btnCatalogo
             // 
-            btnCatalogo.BackColor = Color.FromArgb(227, 130, 61);
+            btnCatalogo.BackColor = Color.FromArgb(255, 146, 69);
             btnCatalogo.Cursor = Cursors.Hand;
+            btnCatalogo.Dock = DockStyle.Top;
+            btnCatalogo.FlatAppearance.BorderColor = Color.FromArgb(255, 146, 69);
+            btnCatalogo.FlatStyle = FlatStyle.Flat;
             btnCatalogo.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnCatalogo.ForeColor = Color.FromArgb(223, 214, 214);
-            btnCatalogo.Location = new Point(-15, -9);
+            btnCatalogo.Location = new Point(0, 0);
             btnCatalogo.Name = "btnCatalogo";
-            btnCatalogo.Size = new Size(289, 68);
+            btnCatalogo.Size = new Size(250, 68);
             btnCatalogo.TabIndex = 0;
             btnCatalogo.Text = "Catalogo";
             btnCatalogo.UseVisualStyleBackColor = false;
             // 
-            // DetalleContainer
-            // 
-            DetalleContainer.BackColor = Color.FromArgb(255, 146, 69);
-            DetalleContainer.Controls.Add(pnlDetallesVentas);
-            DetalleContainer.Controls.Add(pnlResgistrarVenta);
-            DetalleContainer.Controls.Add(pnlResumen);
-            DetalleContainer.Controls.Add(pnlHistorial);
-            DetalleContainer.Location = new Point(0, 50);
-            DetalleContainer.Margin = new Padding(0);
-            DetalleContainer.Name = "DetalleContainer";
-            DetalleContainer.Size = new Size(255, 50);
-            DetalleContainer.TabIndex = 6;
-            // 
-            // pnlDetallesVentas
-            // 
-            pnlDetallesVentas.Controls.Add(btnDetallesVentas);
-            pnlDetallesVentas.Location = new Point(3, 3);
-            pnlDetallesVentas.Name = "pnlDetallesVentas";
-            pnlDetallesVentas.Size = new Size(252, 50);
-            pnlDetallesVentas.TabIndex = 3;
-            // 
             // btnDetallesVentas
             // 
             btnDetallesVentas.BackColor = Color.FromArgb(255, 146, 69);
-            btnDetallesVentas.Cursor = Cursors.Hand;
+            btnDetallesVentas.Dock = DockStyle.Top;
+            btnDetallesVentas.FlatAppearance.BorderColor = Color.FromArgb(255, 146, 69);
+            btnDetallesVentas.FlatStyle = FlatStyle.Flat;
             btnDetallesVentas.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            btnDetallesVentas.ForeColor = Color.FromArgb(223, 214, 214);
-            btnDetallesVentas.Location = new Point(-15, -9);
+            btnDetallesVentas.ForeColor = Color.White;
+            btnDetallesVentas.Location = new Point(0, 144);
             btnDetallesVentas.Name = "btnDetallesVentas";
-            btnDetallesVentas.Size = new Size(289, 68);
-            btnDetallesVentas.TabIndex = 0;
-            btnDetallesVentas.Text = "Detalles de Venta";
+            btnDetallesVentas.Size = new Size(250, 68);
+            btnDetallesVentas.TabIndex = 2;
+            btnDetallesVentas.Text = "Venta";
             btnDetallesVentas.UseVisualStyleBackColor = false;
             btnDetallesVentas.Click += btnDetallesVentas_Click;
             // 
-            // pnlResgistrarVenta
+            // pnlDetallesVentas
             // 
-            pnlResgistrarVenta.Controls.Add(btnRegistrarVenta);
-            pnlResgistrarVenta.Location = new Point(0, 56);
-            pnlResgistrarVenta.Margin = new Padding(0);
-            pnlResgistrarVenta.Name = "pnlResgistrarVenta";
-            pnlResgistrarVenta.Size = new Size(255, 50);
-            pnlResgistrarVenta.TabIndex = 4;
+            pnlDetallesVentas.Controls.Add(btnHistorial);
+            pnlDetallesVentas.Controls.Add(btnResumen);
+            pnlDetallesVentas.Controls.Add(btnRegistrarVenta);
+            pnlDetallesVentas.Dock = DockStyle.Top;
+            pnlDetallesVentas.Location = new Point(0, 212);
+            pnlDetallesVentas.Name = "pnlDetallesVentas";
+            pnlDetallesVentas.Size = new Size(250, 212);
+            pnlDetallesVentas.TabIndex = 3;
             // 
             // btnRegistrarVenta
             // 
-            btnRegistrarVenta.BackColor = Color.FromArgb(227, 130, 61);
-            btnRegistrarVenta.Cursor = Cursors.Hand;
+            btnRegistrarVenta.BackColor = Color.FromArgb(255, 146, 69);
+            btnRegistrarVenta.Dock = DockStyle.Top;
+            btnRegistrarVenta.FlatAppearance.BorderColor = Color.FromArgb(255, 146, 69);
+            btnRegistrarVenta.FlatStyle = FlatStyle.Flat;
             btnRegistrarVenta.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnRegistrarVenta.ForeColor = Color.FromArgb(223, 214, 214);
-            btnRegistrarVenta.Location = new Point(-15, -9);
+            btnRegistrarVenta.Location = new Point(0, 0);
             btnRegistrarVenta.Name = "btnRegistrarVenta";
-            btnRegistrarVenta.Size = new Size(289, 68);
+            btnRegistrarVenta.Size = new Size(250, 68);
             btnRegistrarVenta.TabIndex = 0;
             btnRegistrarVenta.Text = "Registrar Venta";
             btnRegistrarVenta.UseVisualStyleBackColor = false;
-            // 
-            // pnlResumen
-            // 
-            pnlResumen.Controls.Add(btnResumen);
-            pnlResumen.Location = new Point(0, 106);
-            pnlResumen.Margin = new Padding(0);
-            pnlResumen.Name = "pnlResumen";
-            pnlResumen.Size = new Size(255, 50);
-            pnlResumen.TabIndex = 5;
+            btnRegistrarVenta.Click += btnRegistrarVenta_Click_1;
             // 
             // btnResumen
             // 
-            btnResumen.BackColor = Color.FromArgb(227, 130, 61);
-            btnResumen.Cursor = Cursors.Hand;
+            btnResumen.BackColor = Color.FromArgb(255, 146, 69);
+            btnResumen.Dock = DockStyle.Top;
+            btnResumen.FlatAppearance.BorderColor = Color.FromArgb(255, 146, 69);
+            btnResumen.FlatStyle = FlatStyle.Flat;
             btnResumen.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnResumen.ForeColor = Color.FromArgb(223, 214, 214);
-            btnResumen.Location = new Point(-15, -9);
+            btnResumen.Location = new Point(0, 68);
             btnResumen.Name = "btnResumen";
-            btnResumen.Size = new Size(289, 68);
-            btnResumen.TabIndex = 0;
+            btnResumen.Size = new Size(250, 68);
+            btnResumen.TabIndex = 1;
             btnResumen.Text = "Resumen";
             btnResumen.UseVisualStyleBackColor = false;
             // 
-            // pnlHistorial
-            // 
-            pnlHistorial.Controls.Add(btnHistorial);
-            pnlHistorial.Location = new Point(0, 156);
-            pnlHistorial.Margin = new Padding(0);
-            pnlHistorial.Name = "pnlHistorial";
-            pnlHistorial.Size = new Size(255, 50);
-            pnlHistorial.TabIndex = 6;
-            // 
             // btnHistorial
             // 
-            btnHistorial.BackColor = Color.FromArgb(227, 130, 61);
-            btnHistorial.Cursor = Cursors.Hand;
+            btnHistorial.BackColor = Color.FromArgb(255, 146, 69);
+            btnHistorial.Dock = DockStyle.Top;
+            btnHistorial.FlatAppearance.BorderColor = Color.FromArgb(255, 146, 69);
+            btnHistorial.FlatStyle = FlatStyle.Flat;
             btnHistorial.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnHistorial.ForeColor = Color.FromArgb(223, 214, 214);
-            btnHistorial.Location = new Point(-15, -9);
+            btnHistorial.Location = new Point(0, 136);
             btnHistorial.Name = "btnHistorial";
-            btnHistorial.Size = new Size(289, 68);
-            btnHistorial.TabIndex = 0;
+            btnHistorial.Size = new Size(250, 68);
+            btnHistorial.TabIndex = 2;
             btnHistorial.Text = "Historial";
             btnHistorial.UseVisualStyleBackColor = false;
-            // 
-            // pnlCuenta
-            // 
-            pnlCuenta.Controls.Add(btnCuenta);
-            pnlCuenta.Location = new Point(0, 100);
-            pnlCuenta.Margin = new Padding(0);
-            pnlCuenta.Name = "pnlCuenta";
-            pnlCuenta.Size = new Size(255, 50);
-            pnlCuenta.TabIndex = 3;
             // 
             // btnCuenta
             // 
             btnCuenta.BackColor = Color.FromArgb(255, 146, 69);
-            btnCuenta.Cursor = Cursors.Hand;
+            btnCuenta.Dock = DockStyle.Top;
+            btnCuenta.FlatAppearance.BorderColor = Color.FromArgb(255, 146, 69);
+            btnCuenta.FlatStyle = FlatStyle.Flat;
             btnCuenta.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCuenta.ForeColor = Color.FromArgb(223, 214, 214);
-            btnCuenta.Location = new Point(-15, -9);
+            btnCuenta.ForeColor = Color.White;
+            btnCuenta.Location = new Point(0, 424);
             btnCuenta.Name = "btnCuenta";
-            btnCuenta.Size = new Size(292, 68);
-            btnCuenta.TabIndex = 0;
+            btnCuenta.Size = new Size(250, 68);
+            btnCuenta.TabIndex = 4;
             btnCuenta.Text = "Cuenta";
             btnCuenta.UseVisualStyleBackColor = false;
-            // 
-            // pnlCerrarSesion
-            // 
-            pnlCerrarSesion.Controls.Add(btnCerrarSesion);
-            pnlCerrarSesion.Location = new Point(0, 150);
-            pnlCerrarSesion.Margin = new Padding(0);
-            pnlCerrarSesion.Name = "pnlCerrarSesion";
-            pnlCerrarSesion.Size = new Size(255, 50);
-            pnlCerrarSesion.TabIndex = 4;
             // 
             // btnCerrarSesion
             // 
             btnCerrarSesion.BackColor = Color.FromArgb(255, 146, 69);
-            btnCerrarSesion.Cursor = Cursors.Hand;
+            btnCerrarSesion.Dock = DockStyle.Top;
+            btnCerrarSesion.FlatAppearance.BorderColor = Color.FromArgb(255, 146, 69);
+            btnCerrarSesion.FlatStyle = FlatStyle.Flat;
             btnCerrarSesion.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCerrarSesion.ForeColor = Color.FromArgb(223, 214, 214);
-            btnCerrarSesion.Location = new Point(-15, -9);
+            btnCerrarSesion.ForeColor = Color.White;
+            btnCerrarSesion.Location = new Point(0, 492);
             btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(292, 68);
-            btnCerrarSesion.TabIndex = 0;
-            btnCerrarSesion.Text = "Cerrar Sesion";
+            btnCerrarSesion.Size = new Size(250, 68);
+            btnCerrarSesion.TabIndex = 5;
+            btnCerrarSesion.Text = "Cerrar Sesión";
             btnCerrarSesion.UseVisualStyleBackColor = false;
-            // 
-            // Productotransition
-            // 
-            Productotransition.Interval = 5;
-            Productotransition.Tick += Productotransition_Tick;
-            // 
-            // DetalleTransition
-            // 
-            DetalleTransition.Interval = 5;
-            DetalleTransition.Tick += DetalleTransition_Tick;
-            // 
-            // NavBartransition
-            // 
-            NavBartransition.Interval = 5;
-            NavBartransition.Tick += NavBartransition_Tick;
             // 
             // PnlFormHijo
             // 
             PnlFormHijo.BackColor = Color.FromArgb(129, 134, 139);
+            PnlFormHijo.Controls.Add(panel1);
+            PnlFormHijo.Controls.Add(flpNavBar);
             PnlFormHijo.Dock = DockStyle.Fill;
-            PnlFormHijo.Location = new Point(240, 39);
+            PnlFormHijo.Location = new Point(0, 39);
             PnlFormHijo.Name = "PnlFormHijo";
-            PnlFormHijo.Size = new Size(890, 581);
+            PnlFormHijo.Size = new Size(1130, 581);
             PnlFormHijo.TabIndex = 2;
             PnlFormHijo.Paint += PnlFormHijo_Paint;
+            // 
+            // panel1
+            // 
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(250, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(880, 581);
+            panel1.TabIndex = 6;
             // 
             // BaseForm
             // 
@@ -402,7 +346,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1130, 620);
             Controls.Add(PnlFormHijo);
-            Controls.Add(flpNavBar);
             Controls.Add(pnlBarraTitulo);
             FormBorderStyle = FormBorderStyle.None;
             Name = "BaseForm";
@@ -414,16 +357,9 @@
             ((System.ComponentModel.ISupportInitialize)btnMaximizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnMenu).EndInit();
             flpNavBar.ResumeLayout(false);
-            prdContainer.ResumeLayout(false);
-            pnlProductos.ResumeLayout(false);
             pnlCatalogo.ResumeLayout(false);
-            DetalleContainer.ResumeLayout(false);
             pnlDetallesVentas.ResumeLayout(false);
-            pnlResgistrarVenta.ResumeLayout(false);
-            pnlResumen.ResumeLayout(false);
-            pnlHistorial.ResumeLayout(false);
-            pnlCuenta.ResumeLayout(false);
-            pnlCerrarSesion.ResumeLayout(false);
+            PnlFormHijo.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -435,28 +371,21 @@
         private PictureBox btnMaximizar;
         private PictureBox btnRestaurar;
         private PictureBox btnSalir;
-        private FlowLayoutPanel flpNavBar;
-        private Panel pnlProductos;
-        private Button btnProductos;
-        private Panel pnlDetallesVentas;
-        private Button btnDetallesVentas;
-        private Panel pnlCuenta;
-        private Button btnCuenta;
-        private Panel pnlCerrarSesion;
-        private Button btnCerrarSesion;
-        private FlowLayoutPanel prdContainer;
-        private Panel pnlCatalogo;
-        private Button btnCatalogo;
-        private Panel pnlResgistrarVenta;
-        private Button btnRegistrarVenta;
-        private FlowLayoutPanel DetalleContainer;
-        private Panel pnlResumen;
-        private Button btnResumen;
-        private Panel pnlHistorial;
-        private Button btnHistorial;
         private System.Windows.Forms.Timer Productotransition;
         private System.Windows.Forms.Timer DetalleTransition;
         private System.Windows.Forms.Timer NavBartransition;
+        private Panel flpNavBar;
+        private Button btnCerrarSesion;
+        private Button btnCuenta;
+        private Panel pnlDetallesVentas;
+        private Button btnHistorial;
+        private Button btnResumen;
+        private Button btnRegistrarVenta;
+        private Button btnDetallesVentas;
+        private Panel pnlCatalogo;
+        private Button btnCatalogo;
+        private Button btnProductos;
         private Panel PnlFormHijo;
+        private Panel panel1;
     }
 }
